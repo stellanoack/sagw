@@ -2,7 +2,7 @@ import React from 'react';
 
 import './button.css';
 
-export interface ButtonProps {
+export interface InterfaceButtonProps {
   primary?: boolean;
   backgroundColor?: string;
   size?: 'small' | 'medium' | 'large';
@@ -16,12 +16,19 @@ export const Button = ({
   backgroundColor,
   label,
   ...props
-}: ButtonProps) => {
-  const mode = primary ? 'button--primary' : 'button--secondary';
+}: InterfaceButtonProps): React.JSX.Element => {
+  const mode = primary
+    ? 'button--primary'
+    : 'button--secondary';
+
   return (
     <button
-      type="button"
-      className={['button', `button--${size}`, mode].join(' ')}
+      type='button'
+      className={[
+        'button',
+        `button--${size}`,
+        mode,
+      ].join(' ')}
       {...props}
     >
       {label}

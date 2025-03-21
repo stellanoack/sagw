@@ -1,15 +1,20 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import tsRules from './lint/ts-rules.mjs';
+import esRules from './lint/es-rules.mjs';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-})
+});
 
 const eslintConfig = [
+  {
+    ignores: ['**/app/(payload)/**'],
+  },
   ...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:storybook/recommended'),
   {
     files: [
@@ -20,24 +25,10 @@ const eslintConfig = [
       '**/*.tsx',
     ],
     rules: {
-      '@typescript-eslint/ban-ts-comment': 'warn',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      'import/no-anonymous-default-export': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          vars: 'all',
-          args: 'after-used',
-          ignoreRestSiblings: false,
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          destructuredArrayIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^(_|ignore)',
-        },
-      ],
+      ...esRules,
+      ...tsRules,
     },
   },
-]
+];
 
-export default eslintConfig
+export default eslintConfig;
