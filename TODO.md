@@ -1,3 +1,4 @@
 - playwright
 - remove init docker stuff
 - stylint
+- vscode->settings->default formatters
