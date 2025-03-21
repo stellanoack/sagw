@@ -1,3 +1,3 @@
-- storybook
 - playwright
 - remove init docker stuff
+- stylint
