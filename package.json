@@ -1,7 +1,8 @@
 {
   "name": "sagw",
   "version": "1.0.0",
-  "description": "A blank template to get started with Payload 3.0",
+  "description": "Codebase for SAGW websites.",
+  "author": "Vorhall KlG <info@vorhall.com> (https://vorhall.com)",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -12,7 +13,10 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
@@ -28,22 +32,23 @@
     "sharp": "0.32.6"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3.2.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^22.5.4",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
     "prettier": "^3.4.2",
+    "semantic-release": "^24.2.3",
     "typescript": "5.7.3"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp"
-    ]
+    "node": "^18.20.2 || >=20.9.0"
   }
 }
