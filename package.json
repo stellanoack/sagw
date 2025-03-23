@@ -1,6 +1,6 @@
 {
   "name": "sagw",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Codebase for SAGW websites.",
   "author": "Vorhall KlG <info@vorhall.com> (https://vorhall.com)",
   "license": "MIT",
@@ -19,8 +19,11 @@
     "semantic-release": "semantic-release",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:watch": "playwright test --ui-port=8080 --ui-host=0.0.0.0",
-    "test": "playwright test"
+    "test:native": "playwright test",
+    "test:native:watch": "playwright test --ui-port=8080 --ui-host=0.0.0.0",
+    "docker:test:build": "sudo docker compose -f docker-compose.test-env.yml build",
+    "test": "docker compose -f docker-compose.test-env.yml run --rm visual-test npm run test:native",
+    "test:watch": "docker compose -f docker-compose.test-env.yml run --rm -p 8080:8080 visual-test npm run test:native:watch"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
@@ -39,7 +42,7 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3.2.0",
-    "@playwright/experimental-ct-react": "^1.51.1",
+    "@playwright/test": "^1.51.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-essentials": "^8.6.7",
@@ -60,6 +63,6 @@
     "typescript": "5.7.3"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0"
+    "node": "22.14.0"
   }
 }

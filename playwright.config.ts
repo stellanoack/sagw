@@ -1,6 +1,6 @@
 import {
   defineConfig, devices,
-} from '@playwright/experimental-ct-react';
+} from '@playwright/test';
 
 const projects = [
   // viewport micro
@@ -66,6 +66,7 @@ export default defineConfig({
       threshold: 0,
     },
   },
+  forbidOnly: Boolean(process.env.CI),
   fullyParallel: true,
   projects,
   reporter: [

@@ -1,0 +1,7 @@
+services:
+  visual-test:
+    build:
+      context: .
+      dockerfile: test-env.Dockerfile
+    volumes:
+      - .:/src
