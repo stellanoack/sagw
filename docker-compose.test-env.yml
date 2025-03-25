@@ -5,3 +5,4 @@ services:
       dockerfile: test-env.Dockerfile
     volumes:
       - .:/src
+    network_mode: host

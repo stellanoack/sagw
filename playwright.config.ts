@@ -2,6 +2,8 @@ import {
   defineConfig, devices,
 } from '@playwright/test';
 
+const snapshotsDir = 'snapshots';
+
 const projects = [
   // viewport micro
   {
@@ -62,6 +64,7 @@ export default defineConfig({
 
       maxDiffPixelRatio: 0,
       maxDiffPixels: 0,
+      pathTemplate: `${snapshotsDir}/{arg}{ext}`,
       scale: 'device',
       threshold: 0,
     },
@@ -85,6 +88,7 @@ export default defineConfig({
     ['list'],
   ],
   retries: 0,
+  snapshotDir: `./${snapshotsDir}`,
   testDir: './src/',
   use: {
     trace: 'on-first-retry',

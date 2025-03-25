@@ -33,7 +33,10 @@ export default {
       selector: 'function',
     },
     {
-      format: ['camelCase'],
+      format: [
+        'camelCase',
+        'PascalCase',
+      ],
       leadingUnderscore: 'allow',
       selector: 'parameter',
     },

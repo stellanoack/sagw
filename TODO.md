@@ -1,4 +1,12 @@
+- sass
 - playwright
 - remove init docker stuff
 - stylint
 - vscode->settings->default formatters
+- use absolute imports everywhere
+- containerize local db
+- integrate custom components test
+- vrt:
+  - make storbook prod build for vrt. if not, then fetch index.json from running storybook
+  - package npm scripts: run storybook build before run test
+  - when logging meta, then config.rootDir is '/src/src' ???

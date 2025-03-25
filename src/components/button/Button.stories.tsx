@@ -4,8 +4,9 @@ import type {
 } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Button } from './Button';
+import { defaultDecorator } from '@/storybook-helpers';
 
-const meta = {
+const meta: Meta<typeof Button> = {
   argTypes: {
     backgroundColor: {
       control: 'color',
@@ -15,10 +16,14 @@ const meta = {
     onClick: fn(),
   },
   component: Button,
+  decorators: [defaultDecorator],
   parameters: {/* layout: 'centered', */},
-  tags: ['autodocs'],
+  tags: [
+    'autodocs',
+    'visual:check',
+  ],
   title: 'Components/Button',
-} satisfies Meta<typeof Button>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
