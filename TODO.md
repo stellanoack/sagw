@@ -10,3 +10,4 @@
   - make storbook prod build for vrt. if not, then fetch index.json from running storybook
   - package npm scripts: run storybook build before run test
   - when logging meta, then config.rootDir is '/src/src' ???
+  - make single story exclude from vrt
