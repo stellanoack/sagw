@@ -15,8 +15,7 @@ const getStoryUrl = (id: string): string => {
     viewMode: 'story',
   });
 
-  // TODO: make config for url
-  return `http://127.0.0.1:6006/iframe.html?${params.toString()}`;
+  return `${componentsConfig.vrtBaseUrl}?${params.toString()}`;
 };
 
 const filterStories = (stories: IndexEntry[]): IndexEntry[] => stories.filter((story) => {
@@ -37,7 +36,7 @@ const navigate = async (
 
     // TODO: why not working?
     // await page.waitForLoadState('networkidle');
-    await page.waitForSelector('#storybook-root');
+    await page.waitForSelector(`#${componentsConfig.storybookRootDivId}`);
   } catch (error) {
     console.log('error, navigating to storybook page:');
     console.log(error);
@@ -53,22 +52,10 @@ visualStories.forEach((story) => {
     await navigate(page, meta.title);
 
     const elem = await page.getByTestId(componentsConfig.testid);
-
-    const boundingBox = await elem.boundingBox();
-    let clip;
-
-    if (boundingBox) {
-      clip = {
-        height: boundingBox?.height,
-        width: boundingBox?.width,
-        x: boundingBox?.x,
-        y: boundingBox?.y,
-      };
-    }
-
+    const clip = (await elem.boundingBox()) || undefined;
     const fileName = [
-      'components',
-      `${meta.title}`,
+      componentsConfig.vrtSnapshotFolder,
+      meta.title,
       `${meta.project.name}.png`,
     ];
 
@@ -81,6 +68,5 @@ visualStories.forEach((story) => {
         // if true, firefox screenshots will fail... /)
         // omitBackground: true,
       });
-
   });
 });
