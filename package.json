@@ -21,9 +21,9 @@
     "build-storybook": "storybook build",
     "test:native": "playwright test",
     "test:native:watch": "playwright test --ui-port=8080 --ui-host=0.0.0.0",
-    "docker:test:build": "sudo docker compose -f docker-compose.test-env.yml build",
-    "test": "docker compose -f docker-compose.test-env.yml run --rm visual-test npm run test:native",
-    "test:watch": "docker compose -f docker-compose.test-env.yml run --rm -p 8080:8080 visual-test npm run test:native:watch"
+    "docker:test:build": "sudo docker compose -f docker-compose.testing.yml build",
+    "test": "docker compose -f docker-compose.testing.yml run --rm visual-test npm run test:native",
+    "test:watch": "docker compose -f docker-compose.testing.yml run --rm -p 8080:8080 visual-test npm run test:native:watch"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
