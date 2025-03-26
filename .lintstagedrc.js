@@ -5,7 +5,7 @@ const buildEslintCommand = (filenames) => `next lint --file ${filenames
   .join(' --file ')}`;
 
 const config = {
-  '*.scss': 'scss',
+  '*.scss': 'lint:scss',
   '*.{js,jsx,ts,tsx, mjs}': [buildEslintCommand],
 };
 
