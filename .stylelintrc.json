@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "@stylistic/stylelint-config"
+  ],
+  "rules": {
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-descending-specificity": null,
+    "scss/dollar-variable-pattern": null,
+    "selector-class-pattern": null,
+    "selector-pseudo-element-colon-notation": "single",
+    "@stylistic/block-closing-brace-newline-after": null,
+    "@stylistic/max-line-length": null
+  },
+  "ignoreFiles": [
+    "convenience/generate-component/boilerplate/styles/*.scss"
+  ],
+  "plugins": [
+    "@stylistic/stylelint-plugin"
+  ]
+}
+

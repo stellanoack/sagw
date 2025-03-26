@@ -12,7 +12,9 @@
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "lint:js": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "lint:scss": "stylelint '**/*.scss'",
+    "lint": "npm run lint:js && npm run lint:scss",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "prepare": "husky",
@@ -54,6 +56,8 @@
     "@storybook/react": "^8.6.9",
     "@storybook/test": "^8.6.9",
     "@storybook/types": "^8.6.9",
+    "@stylistic/stylelint-config": "^2.0.0",
+    "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/node": "^22.5.4",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
@@ -66,6 +70,8 @@
     "sass": "^1.86.0",
     "semantic-release": "^24.2.3",
     "storybook": "^8.6.9",
+    "stylelint": "^16.17.0",
+    "stylelint-config-standard-scss": "^14.0.0",
     "typescript": "5.7.3"
   },
   "engines": {
