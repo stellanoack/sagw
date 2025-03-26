@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 
-import './button.css';
+// import './button.scss';
+import styles from './button.module.scss';
 
 export interface InterfaceButtonProps {
   primary?: boolean;
@@ -18,15 +21,15 @@ export const Button = ({
   ...props
 }: InterfaceButtonProps): React.JSX.Element => {
   const mode = primary
-    ? 'button--primary'
-    : 'button--secondary';
+    ? styles['button--primary']
+    : styles['button--secondary'];
 
   return (
     <button
       type='button'
       className={[
-        'button',
-        `button--${size}`,
+        styles['button'],
+        styles[`button--${size}`],
         mode,
       ].join(' ')}
       {...props}

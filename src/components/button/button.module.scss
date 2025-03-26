@@ -1,19 +1,30 @@
+@use '@/styles/functions' as fn;
+@use '@/styles/mediaqueries' as mq;
+@use '@/styles/utilities' as ut;
+
 .button {
   display: inline-block;
   cursor: pointer;
   border: 0;
-  border-radius: 3em;
+  border-radius: fn.px-to-rem(20);
   font-weight: 700;
   line-height: 1;
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  box-shadow: 6px 6px red;
+  box-shadow: 6px 6px var(--sample-red);
+
+  @include mq.mq($from: medium) {
+    box-shadow: 6px 6px green;
+  }
+
+  @include ut.hover-style {
+    background-color: pink;
+  }
 }
 .button--primary {
   background-color: #555ab9;
   color: white;
 }
 .button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   background-color: transparent;
   color: #333;
 }

@@ -1,0 +1,11 @@
+@use '@/styles/variables' as vars;
+
+@function px-to-rem($size, $negate:null) {
+  $multiplier: 1rem;
+
+  @if $negate {
+    $multiplier: -1rem;
+  }
+
+  @return calc(#{$size} / #{vars.$base-font-size} * #{$multiplier});
+}

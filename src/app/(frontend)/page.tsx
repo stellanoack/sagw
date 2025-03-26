@@ -5,7 +5,8 @@ import React from 'react';
 import { fileURLToPath } from 'url';
 
 import config from '@/payload.config';
-import './styles.css';
+import { Button } from '@/components/button/Button';
+// import './styles.scss';
 
 export default async function HomePage(): Promise<React.JSX.Element> {
   const headers = await getHeaders();
@@ -60,6 +61,8 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         <a className='codeLink' href={fileURL}>
           <code>app/(frontend)/page.tsx</code>
         </a>
+
+        <Button label='Foobar' />
       </div>
     </div>
   );
