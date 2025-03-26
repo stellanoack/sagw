@@ -2,7 +2,7 @@
 
 @use "sass:meta";
 @use "sass:map";
-@use './variables' as vars;
+@use 'variables' as vars;
 
 // breakpoint map
 $mq-breakpoints: (

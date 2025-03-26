@@ -1,5 +1,5 @@
-@use '@/styles/global';
-@use '@/styles/variables' as vars;
+@use 'global';
+@use 'variables' as vars;
 
 :root {
   --font-mono: 'Roboto Mono', monospace;
