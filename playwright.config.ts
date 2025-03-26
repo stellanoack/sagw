@@ -50,6 +50,12 @@ const projects = [
     name: 'firefox',
     use: devices['Desktop Firefox'],
   },
+
+  // desktop safari
+  {
+    name: 'webkit',
+    use: devices['Desktop Safari'],
+  },
 ];
 
 export default defineConfig({
