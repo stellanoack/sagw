@@ -90,6 +90,13 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
   },
+  webServer: {
+    command: 'npm run storybook:ci',
+    reuseExistingServer: !process.env.CI,
+    stderr: 'ignore',
+    stdout: 'ignore',
+    url: 'http://localhost:6006',
+  },
   workers: process.env.CI
     ? 2
     : 5,
