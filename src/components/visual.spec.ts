@@ -8,8 +8,10 @@ import {
   navigate,
 } from 'testing-helpers';
 
-import manifest from '../../storybook-static/index.json' with { type: 'json' };
 import { componentsConfig } from './config';
+
+const manifestResponse = await fetch(`${componentsConfig.vrtBaseUrl}/index.json`);
+const manifest = await manifestResponse.json();
 
 const visualStories: IndexEntry[] = filterStories(Object.values(manifest.entries) as IndexEntry[]);
 
