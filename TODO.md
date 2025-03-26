@@ -1,13 +1,14 @@
-- sass
-- playwright
-- remove init docker stuff
+- sass, incl. mixins etc. (mq, px-to-rem)
 - stylint
 - vscode->settings->default formatters
 - use absolute imports everywhere
 - containerize local db
-- integrate custom components test
+  - start db before dev
+  - seed function?
+  - reproduction from prod to local dev?
+- linting on root level seems not to work (in editor yes, in cli no)
 - vrt:
-  - make storbook prod build for vrt. if not, then fetch index.json from running storybook
-  - package npm scripts: run storybook build before run test
   - when logging meta, then config.rootDir is '/src/src' ???
-  - make single story exclude from vrt
+  - publish docker to use it in github workflow
+- implement backup/restore
+- documentation
