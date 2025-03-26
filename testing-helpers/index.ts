@@ -9,7 +9,7 @@ export const getStoryUrl = (id: string): string => {
     viewMode: 'story',
   });
 
-  return `${componentsConfig.vrtBaseUrl}?${params.toString()}`;
+  return `${componentsConfig.vrtBaseUrl}/iframe.html?${params.toString()}`;
 };
 
 export const filterStories = (stories: IndexEntry[]): IndexEntry[] => stories.filter((story) => {
