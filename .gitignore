@@ -53,3 +53,6 @@ next-env.d.ts
 
 # storybook
 /storybook-static/
+
+# mongo-db
+/mongo-db-data/
