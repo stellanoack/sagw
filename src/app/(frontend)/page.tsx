@@ -6,7 +6,6 @@ import { fileURLToPath } from 'url';
 
 import config from '@/payload.config';
 import { Button } from '@/components/Button/Button';
-// import './styles.scss';
 
 export default async function HomePage(): Promise<React.JSX.Element> {
   const headers = await getHeaders();

@@ -2,7 +2,7 @@ import {
   expect,
   test,
 } from '@playwright/test';
-import { navigate } from 'testing-helpers';
+import { navigate } from '@/testing-helpers';
 
 test('button should be visible', async ({
   page,

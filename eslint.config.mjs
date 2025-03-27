@@ -5,10 +5,10 @@ import tsRules from './lint/ts-rules.mjs';
 import esRules from './lint/es-rules.mjs';
 
 const filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(filename);
+const rootDirname = dirname(filename);
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: rootDirname,
 });
 
 const eslintConfig = [

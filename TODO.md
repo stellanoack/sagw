@@ -1,14 +1,12 @@
-- sass, incl. mixins etc. (mq, px-to-rem)
-- stylint
 - vscode->settings->default formatters
 - use absolute imports everywhere
 - containerize local db
-  - start db before dev
   - seed function?
   - reproduction from prod to local dev?
 - linting on root level seems not to work (in editor yes, in cli no)
 - vrt:
   - when logging meta, then config.rootDir is '/src/src' ???
   - publish docker to use it in github workflow
+  - networkIdle await is not working
 - implement backup/restore
 - documentation

@@ -6,7 +6,7 @@ import { IndexEntry } from '@storybook/types';
 import {
   filterStories,
   navigate,
-} from 'testing-helpers';
+} from '@/testing-helpers';
 
 import { componentsConfig } from './config';
 
