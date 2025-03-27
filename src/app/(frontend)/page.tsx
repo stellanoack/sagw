@@ -5,7 +5,7 @@ import React from 'react';
 import { fileURLToPath } from 'url';
 
 import config from '@/payload.config';
-import { Button } from '@/components/button/Button';
+import { Button } from '@/components/Button/Button';
 // import './styles.scss';
 
 export default async function HomePage(): Promise<React.JSX.Element> {
