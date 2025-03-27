@@ -13,7 +13,10 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   {
-    ignores: ['**/app/(payload)/**'],
+    ignores: [
+      '**/app/(payload)/**',
+      '**/convenience/**',
+    ],
   },
   ...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:storybook/recommended'),
   {

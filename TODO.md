@@ -1,5 +1,4 @@
 - vscode->settings->default formatters
-- use absolute imports everywhere
 - containerize local db
   - seed function?
   - reproduction from prod to local dev?
@@ -10,3 +9,5 @@
   - networkIdle await is not working
 - implement backup/restore
 - documentation
+- add component generator
+- order npm scripts
