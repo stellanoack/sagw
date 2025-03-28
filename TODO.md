@@ -6,8 +6,7 @@
 - vrt:
   - when logging meta, then config.rootDir is '/src/src' ???
   - publish docker to use it in github workflow
-  - networkIdle await is not working
 - implement backup/restore
 - documentation
-- add component generator
 - order npm scripts
+- staging and prod environment... release-please?

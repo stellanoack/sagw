@@ -27,9 +27,6 @@ export const navigate = async (
     const url = getStoryUrl(id);
 
     await page.goto(url);
-
-    // TODO: why not working?
-    // await page.waitForLoadState('networkidle');
     await page.waitForSelector(`#${componentsConfig.storybookRootDivId}`);
   } catch (error) {
     console.log('error, navigating to storybook page:');
