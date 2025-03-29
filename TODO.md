@@ -1,12 +1,13 @@
-- vscode->settings->default formatters
 - containerize local db
   - seed function?
   - reproduction from prod to local dev?
-- linting on root level seems not to work (in editor yes, in cli no)
 - vrt:
   - when logging meta, then config.rootDir is '/src/src' ???
   - publish docker to use it in github workflow
-- implement backup/restore
+- test integration of backup/restore
 - documentation
 - order npm scripts
 - staging and prod environment... release-please?
+- add sentry
+- cron jobs: slack message instead of mail?
+- cron jobs: Send mail on failure

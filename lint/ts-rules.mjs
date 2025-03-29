@@ -14,7 +14,11 @@ export default {
       selector: 'interface',
     },
     {
-      format: ['camelCase'],
+      format: [
+        'camelCase',
+        'UPPER_CASE',
+        'PascalCase',
+      ],
       selector: 'default',
     },
     {
@@ -41,7 +45,11 @@ export default {
       selector: 'parameter',
     },
     {
-      format: ['camelCase'],
+      format: [
+        'camelCase',
+        'UPPER_CASE',
+        'PascalCase',
+      ],
       leadingUnderscore: 'require',
       modifiers: ['private'],
       selector: 'memberLike',
@@ -91,9 +99,7 @@ export default {
     'error',
     2,
     {
-      /* eslint-disable @typescript-eslint/naming-convention */
       SwitchCase: 1,
-      /* eslint-enable @typescript-eslint/naming-convention */
     },
   ],
 };

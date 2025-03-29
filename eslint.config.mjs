@@ -8,12 +8,14 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  globalIgnores([
-    '**/app/(payload)/*',
-    '**/convenience/*',
-    '**/node_modules/*',
-  ]),
   ...compat.extends('next/core-web-vitals', 'next/typescript', 'plugin:storybook/recommended'),
+  globalIgnores([
+    'convenience/*',
+    'node_modules/*',
+    'src/app/(payload)/**/*',
+    '!src/app/(payload)/**/*/',
+    '!src/app/(payload)/api/cron-blob-backup/*',
+  ]),
   {
     files: [
       '**/*.mjs',

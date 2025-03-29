@@ -29,7 +29,9 @@
     "test": "docker compose -f docker-compose.testing.yml run --rm visual-test npm run test:native",
     "test:watch": "docker compose -f docker-compose.testing.yml run --rm -p 8080:8080 visual-test npm run test:native:watch",
     "start:db": "docker compose -f docker-compose.db.yml run --rm -p 27017:27017 mongodb --quiet --syslog",
-    "generate:component": "tsx convenience/generate-component/index.ts"
+    "generate:component": "tsx convenience/generate-component/index",
+    "restore:blob": "tsx ./src/backup-restore/restores/blob-restore",
+    "restore:db": "tsx ./src/backup-restore/restores/db-restore"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
@@ -45,6 +47,8 @@
     "sharp": "0.32.6"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.777.0",
+    "@aws-sdk/lib-storage": "^3.777.0",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@eslint/eslintrc": "^3.2.0",
@@ -62,12 +66,20 @@
     "@types/node": "^22.5.4",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@vercel/blob": "^0.27.3",
+    "boxen": "^8.0.1",
+    "bson": "^6.10.3",
+    "chalk": "^5.4.1",
     "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
     "eslint": "^9.16.0",
     "eslint-config-next": "15.2.2",
     "eslint-plugin-storybook": "^0.11.6",
     "husky": "^9.1.7",
+    "inquirer": "^12.5.0",
     "lint-staged": "^15.5.0",
+    "mongodb": "^6.15.0",
+    "resend": "^4.2.0",
     "sass": "^1.86.0",
     "semantic-release": "^24.2.3",
     "storybook": "^8.6.9",

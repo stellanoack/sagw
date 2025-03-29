@@ -105,3 +105,7 @@ For convenience, the setup includes a generator to create boilerplate files for 
 ```bash
 npm run generate:component MyComponent
 ```
+
+## Backup and Restore (Vercel Blob and DB)
+
+For details, see `src/backup-restores/README.md`.

@@ -1,0 +1,96 @@
+// Should be triggered manually.
+
+import chalk from 'chalk';
+import dotenv from 'dotenv';
+import { EJSON } from 'bson';
+import { S3Helper } from '../helpers/s3';
+import { DbHelper } from '../helpers/db';
+import config from '../config';
+import { sortBucketsNewestFirst } from '../helpers/date';
+import {
+  inquirerAskBucketToRestore,
+  inquirerAskForProceed,
+} from '../helpers/inquirer';
+
+dotenv.config();
+
+const main = async (): Promise<void> => {
+  const dbHelper = new DbHelper();
+
+  try {
+    const proceedMessage = `Restore DB from S3 to OVH. ${chalk.red('This is a destructive process. Collections from the backup will overwrite the existing collections in MongoDB.')}`;
+    const proceed = await inquirerAskForProceed(proceedMessage);
+
+    if (!proceed) {
+      throw new Error('User aborted.');
+    }
+
+    const s3Helper = new S3Helper();
+    const buckets = await s3Helper.getAllBuckets();
+    const dbBuckets = buckets.filter((bucket) => bucket?.Name?.indexOf(config.dbBackupBucketPrefix) !== -1);
+
+    if (!dbBuckets || dbBuckets.length < 1) {
+      throw new Error('no backups found to restore');
+    }
+
+    const sortedBlockBuckets = sortBucketsNewestFirst(dbBuckets);
+    const selectedBucket = await inquirerAskBucketToRestore(sortedBlockBuckets);
+    const allObjectsInBucket = await s3Helper.listObjectsOfBucket(selectedBucket);
+
+    const finalConfirmationMessage = `I am about to restore ${chalk.green(allObjectsInBucket.length)} collections from S3 Bucket named ${chalk.green(selectedBucket)} to MongoDB. Are you sure you want to continue?`;
+    const finalConfirmation = await inquirerAskForProceed(finalConfirmationMessage);
+
+    if (!finalConfirmation) {
+      console.log('aborting');
+
+      return;
+    }
+
+    if (!process.env.DATABASE_NAME) {
+      console.log('Aborting. DATABASE_NAME is not defined in env.');
+
+      return;
+    }
+
+    await Promise.all(allObjectsInBucket.map(async (object) => {
+      if (object) {
+
+        const collectionNameSplit = object.split('.json');
+
+        if (!process.env.DATABASE_NAME) {
+          throw new Error('Fatal: process.env.DATABASE_NAME is not defined');
+        }
+
+        if (collectionNameSplit.length === 2) {
+          const [collectionName] = collectionNameSplit;
+          const objectData = await s3Helper.getObject(selectedBucket, object);
+
+          await dbHelper.deleteCollection(process.env.DATABASE_NAME, collectionName);
+
+          if (!objectData) {
+            throw new Error(`Fatal: was not able to get object with the specified name: ${selectedBucket}`);
+          }
+
+          const parsed = EJSON.parse(objectData);
+
+          if (parsed.length > 0) {
+            await dbHelper.addDocumentsToColletion(process.env.DATABASE_NAME, collectionName, parsed);
+          }
+
+        }
+      }
+    }));
+
+    console.log(chalk.bgGreen('-->> Restore done: OVH S3 to MongoDB'));
+
+  } catch (error) {
+    console.log(chalk.bgRed(error));
+  } finally {
+    dbHelper?.getClient()
+      ?.close();
+  }
+};
+
+export default main;
+
+main();
