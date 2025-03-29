@@ -1,3 +1,8 @@
+/**
+ * Requires the follwoing env-variables:
+ * - DATABASE_URI
+ */
+
 import dotenv from 'dotenv';
 import {
   Collection,

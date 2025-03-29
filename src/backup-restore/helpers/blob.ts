@@ -1,3 +1,8 @@
+/**
+ * Requires the follwoing env-variables:
+ * - BLOB_READ_WRITE_TOKEN
+ */
+
 import {
   del,
   list,

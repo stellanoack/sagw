@@ -1,7 +1,11 @@
-// Ideally executed as cron-job.
-
-// todo:
-// - log deleted buckets
+/**
+ * Requires the follwoing env-variables:
+ * - OVH_OS_ACCESS_PUBLIC_KEY
+ * - OVH_OS_ACCESS_PRIVATE_KEY
+ * - OVH_OS_IMAGES_BACKUP_CONTAINER_ENDPOINT
+ * - RESEND_KEY
+ * - MAIL_TO
+ */
 
 import { S3Helper } from '../helpers/s3';
 import config from '../config';
@@ -11,17 +15,6 @@ import { getErrorMessage } from '../helpers/try-catch-error';
 import type { Bucket } from '@aws-sdk/client-s3';
 
 const cleanUpBucketsWithPrefix = async (prefix: string, allBuckets: [(Bucket | undefined)?], s3Helper: S3Helper): Promise<[string?]> => {
-
-  // If run as cron-job on vercel, make sure that only cron-jobs can execute
-  // the script.
-  /*
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-  */
 
   const buckets = allBuckets.filter((bucket) => bucket?.Name?.indexOf(prefix) !== -1);
   const bucketsSorted = sortBucketsNewestFirst(buckets);

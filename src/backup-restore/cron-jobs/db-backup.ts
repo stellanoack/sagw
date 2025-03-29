@@ -1,4 +1,13 @@
-// Ideally executed as cron-job.
+/**
+ * Requires the follwoing env-variables:
+ * - DATABASE_NAME
+ * - DATABASE_URI
+ * - OVH_OS_ACCESS_PUBLIC_KEY
+ * - OVH_OS_ACCESS_PRIVATE_KEY
+ * - OVH_OS_IMAGES_BACKUP_CONTAINER_ENDPOINT
+ * - RESEND_KEY
+ * - MAIL_TO
+ */
 
 import dotenv from 'dotenv';
 import { EJSON } from 'bson';
@@ -12,17 +21,6 @@ import { getErrorMessage } from '../helpers/try-catch-error';
 dotenv.config();
 
 const main = async (): Promise<void> => {
-  // If run as cron-job on vercel, make sure that only cron-jobs can execute
-  // the script.
-  /*
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-  */
-
   const dbHelper = new DbHelper();
 
   try {

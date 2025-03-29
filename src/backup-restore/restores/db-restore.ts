@@ -1,4 +1,11 @@
-// Should be triggered manually.
+/**
+ * Requires the follwoing env-variables:
+ * - DATABASE_NAME
+ * - DATABASE_URI
+ * - OVH_OS_ACCESS_PUBLIC_KEY
+ * - OVH_OS_ACCESS_PRIVATE_KEY
+ * - OVH_OS_IMAGES_BACKUP_CONTAINER_ENDPOINT
+ */
 
 import chalk from 'chalk';
 import dotenv from 'dotenv';

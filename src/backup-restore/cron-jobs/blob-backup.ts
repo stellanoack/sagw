@@ -1,4 +1,12 @@
-// Ideally executed as cron-job.
+/**
+ * Requires the follwoing env-variables:
+ * - OVH_OS_ACCESS_PUBLIC_KEY
+ * - OVH_OS_ACCESS_PRIVATE_KEY
+ * - OVH_OS_IMAGES_BACKUP_CONTAINER_ENDPOINT
+ * - BLOB_READ_WRITE_TOKEN
+ * - RESEND_KEY
+ * - MAIL_TO
+ */
 
 import { Readable } from 'node:stream';
 import { ReadableStream } from 'node:stream/web';
@@ -10,17 +18,6 @@ import mail from '../helpers/mail';
 import { getErrorMessage } from '../helpers/try-catch-error';
 
 const main = async (): Promise<void> => {
-
-  // If run as cron-job on vercel, make sure that only cron-jobs can execute
-  // the script.
-  /*
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-  */
 
   try {
     const s3Helper = new S3Helper();

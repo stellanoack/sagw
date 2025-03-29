@@ -1,4 +1,10 @@
-// Should be triggered manually.
+/**
+ * Requires the follwoing env-variables:
+ * - OVH_OS_ACCESS_PUBLIC_KEY
+ * - OVH_OS_ACCESS_PRIVATE_KEY
+ * - OVH_OS_IMAGES_BACKUP_CONTAINER_ENDPOINT
+ * - BLOB_READ_WRITE_TOKEN
+ */
 
 import chalk from 'chalk';
 import * as blobHelpers from '../helpers/blob';

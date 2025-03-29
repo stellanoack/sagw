@@ -1,3 +1,9 @@
+/**
+ * Requires the follwoing env-variables:
+ * - RESEND_KEY
+ * - MAIL_TO
+ */
+
 import { Resend } from 'resend';
 import dotenv from 'dotenv';
 import config from '../config';

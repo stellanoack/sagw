@@ -11,3 +11,6 @@
 - add sentry
 - cron jobs: slack message instead of mail?
 - cron jobs: Send mail on failure
+- document in backup-restore files, which env variables are required
+- document all env variables
+- cron jobs invoke one method, which itself is wrapped in try/catch. Test to see if this is enough, or if the GET handler needs a try/catch as well.
