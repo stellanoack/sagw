@@ -38,12 +38,12 @@
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "cross-env": "^7.0.3",
-    "graphql": "^16.8.1",
-    "next": "15.2.2",
+    "graphql": "^16.11.0",
+    "next": "15.3.1",
     "payload": "latest",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "sharp": "0.32.6"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sharp": "0.34.1"
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.777.0",
@@ -61,8 +61,8 @@
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/node": "^22.5.4",
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
     "@vercel/blob": "^0.27.3",
     "boxen": "^8.0.1",
     "bson": "^6.10.3",
